@@ -33,16 +33,18 @@ class BattingAverage
     end
   end
 
-  def extract_players
-    [].tap do |result|
-      CSV.foreach(@batting_path, converters: :numeric, headers: true) do |row|
-        result << {
-          ab:        row['AB'],
-          h:         row['H'],
-          player_id: row['playerID'],
-          team_name: team_name(row['teamID']),
-          year_id:   row['yearID']
-        }
+  def players
+    @players ||= begin
+      [].tap do |result|
+        CSV.foreach(@batting_path, converters: :numeric, headers: true) do |row|
+          result << {
+            ab:        row['AB'],
+            h:         row['H'],
+            player_id: row['playerID'],
+            team_name: team_name(row['teamID']),
+            year_id:   row['yearID']
+          }
+        end
       end
     end
   end
@@ -60,7 +62,7 @@ class BattingAverage
   end
 
   def players_by_year
-    extract_players.group_by { |item| "player_id:#{item[:player_id]},year_id:#{item[:year_id]}" }
+    players.group_by { |item| "player_id:#{item[:player_id]},year_id:#{item[:year_id]}" }
   end
 
   def print_table
