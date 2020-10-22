@@ -1,5 +1,7 @@
 # Batting Average
 
+[![CI](https://github.com/wbotelhos/batting_average/workflows/CI/badge.svg?)](https://github.com/wbotelhos/batting_average/actions?query=workflow%3ACI)
+
 ## Setup
 
 ```sh
