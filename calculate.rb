@@ -9,11 +9,11 @@ options = { filters: {} }
 OptionParser.new do |opts|
   opts.banner = "Usage: ruby calculate.rb [options]"
 
-  opts.on("--batting_file_path=PATH", "Batting CSV path (./Batting.csv)") do |value|
+  opts.on("--batting_file_path=PATH", "Batting CSV path (./data/Batting.csv)") do |value|
     options[:batting_file_path] = value
   end
 
-  opts.on("--teams_file_path=PATH", "Teams CSV path (./Teams.csv)") do |value|
+  opts.on("--teams_file_path=PATH", "Teams CSV path (./data/Teams.csv)") do |value|
     options[:teams_file_path] = value
   end
 

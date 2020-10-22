@@ -4,7 +4,7 @@ require 'csv'
 require 'terminal-table'
 
 class BattingAverage
-  def initialize(batting_path: 'Batting.csv', filters: {}, teams_path: 'Teams.csv')
+  def initialize(batting_path: 'data/Batting.csv', filters: {}, teams_path: 'data/Teams.csv')
     @batting_path = batting_path
     @filters      = filters
     @teams_path   = teams_path
