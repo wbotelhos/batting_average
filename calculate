@@ -9,7 +9,7 @@ require_relative 'batting_average'
 options = { filters: {} }
 
 OptionParser.new do |opts|
-  opts.banner = "Usage: ruby calculate.rb [options]"
+  opts.banner = "Usage: ruby calculate [options]"
 
   opts.on("--batting_file_path=PATH", "Batting CSV path (./Batting.csv)") do |value|
     options[:batting_file_path] = value
@@ -27,6 +27,18 @@ OptionParser.new do |opts|
     options[:filters][:team_name] = value if value
   end
 end.parse!
+
+unless options[:batting_file_path]
+  puts '--batting_file_path=PATH required! Check: `ruby calculate --help`'
+
+  exit 1
+end
+
+unless options[:teams_file_path]
+  puts '--teams_file_path=PATH required! Check: `ruby calculate --help`'
+
+  exit 1
+end
 
 BattingAverage
   .new(batting_path: options[:batting_file_path], filters: options[:filters], teams_path: options[:teams_file_path])
