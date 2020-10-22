@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe BattingAverage, '#extract_players' do
+RSpec.describe BattingAverage, '#teams' do
   subject(:batting_average) { described_class.new(teams_path: 'spec/fixtures/Teams.csv') }
 
   it "extract teams data" do
