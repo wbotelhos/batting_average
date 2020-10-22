@@ -11,7 +11,7 @@ RSpec.describe BattingAverage, '#team_names' do
     ]
   end
 
-  it "returns team names separated by commas and sorted" do
+  it 'returns team names separated by commas and sorted' do
     expect(batting_average.team_names(stints)).to eq 'A, B, C'
   end
 end

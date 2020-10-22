@@ -12,7 +12,7 @@ RSpec.describe BattingAverage, '#print_table' do
 
   before { allow(batting_average).to receive(:data_table).and_return(data) }
 
-  it "extract players data" do
+  it 'extract players data' do
     output = <<~HEREDOC
       +-----------+--------+-----------------------+-----------------+
       | playerID  | yearId | Team name(s)          | Batting Average |

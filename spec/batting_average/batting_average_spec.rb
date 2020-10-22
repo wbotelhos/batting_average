@@ -11,7 +11,7 @@ RSpec.describe BattingAverage, '#batting_average' do
     ]
   end
 
-  it "returns team names separated by commas and sorted" do
+  it 'returns team names separated by commas and sorted' do
     expect(batting_average.batting_average(stints)).to eq '0.090' # # 0,08955223881
   end
 end

@@ -13,7 +13,7 @@ class BattingAverage
   def average(h, ab)
     value = ab.positive? ? h.to_f / ab : 0
 
-    sprintf('%.3f', value)
+    format('%.3f', value)
   end
 
   def batting_average(stints)
@@ -41,13 +41,15 @@ class BattingAverage
           year      = row['yearID']
           team_name = team_name(row['teamID'])
 
-          result << {
-            ab:        row['AB'],
-            h:         row['H'],
-            player_id: row['playerID'],
-            team_name: team_name,
-            year_id:   year
-          } if allowed?(year, team_name)
+          if allowed?(year, team_name)
+            result << {
+              ab:        row['AB'],
+              h:         row['H'],
+              player_id: row['playerID'],
+              team_name: team_name,
+              year_id:   year,
+            }
+          end
         end
       end
     end
