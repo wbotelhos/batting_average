@@ -10,7 +10,9 @@ class BattingAverage
   end
 
   def average(h, ab)
-    sprintf('%.3f', h.to_f / ab)
+    value = ab.positive? ? h.to_f / ab : 0
+
+    sprintf('%.3f', value)
   end
 
   def batting_average(stints)
