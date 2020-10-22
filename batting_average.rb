@@ -23,7 +23,7 @@ class BattingAverage
   end
 
   def data_table
-    players_by_year.map do |data|
+    players_average.map do |data|
       [
         data[:player_id],
         data[:year_id],

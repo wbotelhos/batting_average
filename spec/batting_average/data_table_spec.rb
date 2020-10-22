@@ -23,7 +23,7 @@ RSpec.describe BattingAverage, '#data_table' do
     ]
   end
 
-  before { allow(batting_average).to receive(:players_by_year).and_return(data) }
+  before { allow(batting_average).to receive(:players_average).and_return(data) }
 
   it "extract players data" do
     expect(batting_average.data_table).to eq [
