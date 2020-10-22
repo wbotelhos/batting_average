@@ -1,6 +1,5 @@
 require 'csv'
 require 'optparse'
-require 'pry'
 require 'terminal-table'
 
 require_relative 'batting_average'
