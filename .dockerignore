@@ -1,0 +1,7 @@
+**/.rspec
+**/*.md
+/.bundle
+/.git*
+/.ruby-*
+/Dockerfile
+/spec
