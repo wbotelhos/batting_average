@@ -20,11 +20,11 @@ OptionParser.new do |opts|
   end
 
   opts.on("--filter-year=YEAR", "Filter by Year (1991)") do |value|
-    options[:filters][:year] = value if value
+    options[:filters][:year] = value
   end
 
   opts.on("--filter-team-name=NAME", "Filter by Team Name ('New York Mets')") do |value|
-    options[:filters][:team_name] = value if value
+    options[:filters][:team_name] = value
   end
 end.parse!
 
