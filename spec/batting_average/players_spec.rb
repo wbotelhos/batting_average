@@ -17,8 +17,16 @@ RSpec.describe BattingAverage, '#players' do
   context 'with filter' do
     subject(:batting_average) { described_class.new(batting_path: 'spec/fixtures/Batting.csv', filters: filters) }
 
-    context 'when year filter is given' do
+    context 'when year filter is given as number' do
       let(:filters) { { year: 1871 } }
+
+      it "extract players data" do
+        expect(batting_average.players.map { |item| item[:player_id] }).to eq ["allisar01", "allisar01"]
+      end
+    end
+
+    context 'when year filter is given as string' do
+      let(:filters) { { year: '1871' } }
 
       it "extract players data" do
         expect(batting_average.players.map { |item| item[:player_id] }).to eq ["allisar01", "allisar01"]

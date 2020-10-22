@@ -96,6 +96,6 @@ class BattingAverage
   def allowed?(year, team_name)
     return true if @filters.empty?
 
-    year == @filters.fetch(:year, year) && team_name == @filters.fetch(:team_name, team_name)
+    year == @filters.fetch(:year, year).to_i && team_name == @filters.fetch(:team_name, team_name)
   end
 end
