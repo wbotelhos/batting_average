@@ -4,8 +4,9 @@ require 'csv'
 require 'terminal-table'
 
 class BattingAverage
-  def initialize(batting_path: 'Batting.csv', teams_path: 'Teams.csv')
+  def initialize(batting_path: 'Batting.csv', filters: {}, teams_path: 'Teams.csv')
     @batting_path = batting_path
+    @filters      = filters
     @teams_path   = teams_path
   end
 
@@ -37,13 +38,16 @@ class BattingAverage
     @players ||= begin
       [].tap do |result|
         CSV.foreach(@batting_path, converters: :numeric, headers: true) do |row|
+          year      = row['yearID']
+          team_name = team_name(row['teamID'])
+
           result << {
             ab:        row['AB'],
             h:         row['H'],
             player_id: row['playerID'],
-            team_name: team_name(row['teamID']),
-            year_id:   row['yearID']
-          }
+            team_name: team_name,
+            year_id:   year
+          } if allowed?(year, team_name)
         end
       end
     end
@@ -85,5 +89,13 @@ class BattingAverage
         end
       end
     end
+  end
+
+  private
+
+  def allowed?(year, team_name)
+    return true if @filters.empty?
+
+    year == @filters.fetch(:year, year) && team_name == @filters.fetch(:team_name, team_name)
   end
 end
