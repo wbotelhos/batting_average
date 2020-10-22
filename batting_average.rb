@@ -34,6 +34,10 @@ class BattingAverage
     teams[team_id]
   end
 
+  def team_names(stints)
+    stints.map { |data| data[:team_name] }.sort.join(', ')
+  end
+
   def teams
     @teams ||= begin
       {}.tap do |result|
