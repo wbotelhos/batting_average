@@ -26,6 +26,10 @@ class BattingAverage
     end
   end
 
+  def team_name(team_id)
+    teams[team_id]
+  end
+
   def teams
     @teams ||= begin
       {}.tap do |result|
