@@ -1,15 +1,32 @@
 require 'csv'
-require 'terminal-table'
+require 'optparse'
 require 'pry'
+require 'terminal-table'
 
 require_relative 'batting_average'
 
-batting_file_path = ARGV[0]
-teams_file_path   = ARGV[1]
+options = { filters: {} }
 
-raise('Missing Batting file path!') unless batting_file_path
-raise('Missing Teams file path!') unless teams_file_path
+OptionParser.new do |opts|
+  opts.banner = "Usage: ruby calculate.rb [options]"
 
-batting_average = BattingAverage.new(batting_path: batting_file_path, teams_path: teams_file_path)
+  opts.on("--batting_file_path=PATH", "Batting CSV path (./Batting.csv)") do |value|
+    options[:batting_file_path] = value
+  end
 
-batting_average.print_table
+  opts.on("--teams_file_path=PATH", "Teams CSV path (./Teams.csv)") do |value|
+    options[:teams_file_path] = value
+  end
+
+  opts.on("--filter-year=YEAR", "Filter by Year (1991)") do |value|
+    options[:filters][:year] = value if value
+  end
+
+  opts.on("--filter-team-name=NAME", "Filter by Team Name ('New York Mets')") do |value|
+    options[:filters][:team_name] = value if value
+  end
+end.parse!
+
+BattingAverage
+  .new(batting_path: options[:batting_file_path], filters: options[:filters], teams_path: options[:teams_file_path])
+  .print_table
