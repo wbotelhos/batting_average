@@ -19,7 +19,7 @@ class BattingAverage
           ab:        row['AB'],
           h:         row['H'],
           player_id: row['playerID'],
-          team_name: row['teamID'],
+          team_name: team_name(row['teamID']),
           year_id:   row['yearID']
         }
       end
