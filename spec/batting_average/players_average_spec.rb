@@ -22,13 +22,13 @@ RSpec.describe BattingAverage, '#players_average' do
 
   before { allow(batting_average).to receive(:players_by_year).and_return(data) }
 
-  it "extract players data" do
+  it "extract players data sorted by average" do
     expect(batting_average.players_average).to eq [
       {
-        batting_average: "0.000",
-        identity:        "player_id:abercda01,year_id:1871",
-        player_id:       "abercda01",
-        team_names:      "Troy Haymakers",
+        batting_average: "0.292",
+        identity:        "player_id:allisar01,year_id:1871",
+        player_id:       "allisar01",
+        team_names:      "Cleveland Blues, Cleveland Forest Citys",
         year_id:         1871,
       },
 
@@ -41,12 +41,12 @@ RSpec.describe BattingAverage, '#players_average' do
       },
 
       {
-        batting_average: "0.292",
-        identity:        "player_id:allisar01,year_id:1871",
-        player_id:       "allisar01",
-        team_names:      "Cleveland Blues, Cleveland Forest Citys",
+        batting_average: "0.000",
+        identity:        "player_id:abercda01,year_id:1871",
+        player_id:       "abercda01",
+        team_names:      "Troy Haymakers",
         year_id:         1871,
-      }
+      },
     ]
   end
 end

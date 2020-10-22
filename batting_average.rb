@@ -58,7 +58,7 @@ class BattingAverage
         team_names:      team_names(stints),
         year_id:         stints.first[:year_id],
       }
-    end
+    end.sort_by { |data| data[:batting_average] }.reverse
   end
 
   def players_by_year
