@@ -7,7 +7,7 @@ RSpec.describe BattingAverage, '#data_table' do
     [
       {
         batting_average: "0.000",
-        identity:        "player_id:abercda01,year_id:1871",
+        identity:        "abercda01:1871",
         player_id:       "abercda01",
         team_names:      "Troy Haymakers",
         year_id:         1871,
@@ -15,7 +15,7 @@ RSpec.describe BattingAverage, '#data_table' do
 
       {
         batting_average: "0.271",
-        identity:        "player_id:addybo01,year_id:1871",
+        identity:        "addybo01:1871",
         player_id:       "addybo01",
         team_names:      "Rockford Forest Citys",
         year_id:         1871,

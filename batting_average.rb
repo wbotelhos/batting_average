@@ -66,7 +66,7 @@ class BattingAverage
   end
 
   def players_by_year
-    players.group_by { |item| "player_id:#{item[:player_id]},year_id:#{item[:year_id]}" }
+    players.group_by { |item| "#{item[:player_id]}:#{item[:year_id]}" }
   end
 
   def print_table
