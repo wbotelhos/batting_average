@@ -1,0 +1,15 @@
+require 'csv'
+require 'terminal-table'
+require 'pry'
+
+require_relative 'batting_average'
+
+batting_file_path = ARGV[0]
+teams_file_path   = ARGV[1]
+
+raise('Missing Batting file path!') unless batting_file_path
+raise('Missing Teams file path!') unless teams_file_path
+
+batting_average = BattingAverage.new(batting_path: batting_file_path, teams_path: teams_file_path)
+
+batting_average.print_table
