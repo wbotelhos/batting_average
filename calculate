@@ -1,3 +1,5 @@
+#!/bin/ruby
+
 require 'csv'
 require 'optparse'
 require 'terminal-table'
