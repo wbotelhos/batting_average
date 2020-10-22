@@ -12,6 +12,13 @@ class BattingAverage
     sprintf('%.3f', h.to_f / ab)
   end
 
+  def batting_average(stints)
+    ab_sum = stints.sum { |data| data[:ab] }
+    h_sum  = stints.sum { |data| data[:h] }
+
+    average(h_sum, ab_sum)
+  end
+
   def extract_players
     [].tap do |result|
       CSV.foreach(@batting_path, converters: :numeric, headers: true) do |row|
