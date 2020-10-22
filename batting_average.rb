@@ -33,6 +33,18 @@ class BattingAverage
     end
   end
 
+  def players_average
+    players_by_year.map do |identity, stints|
+      {
+        batting_average: batting_average(stints),
+        identity:        identity,
+        player_id:       stints.first[:player_id],
+        team_names:      team_names(stints),
+        year_id:         stints.first[:year_id],
+      }
+    end
+  end
+
   def players_by_year
     extract_players.group_by { |item| "player_id:#{item[:player_id]},year_id:#{item[:year_id]}" }
   end
