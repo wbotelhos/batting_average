@@ -3,7 +3,7 @@
 require 'csv'
 
 class BattingAverage
-  def initialize(batting_path, teams_path)
+  def initialize(batting_path: 'Batting.csv', teams_path: 'Teams.csv')
     @batting_path = batting_path
     @teams_path   = teams_path
   end
@@ -22,6 +22,16 @@ class BattingAverage
           team_name: row['teamID'],
           year_id:   row['yearID']
         }
+      end
+    end
+  end
+
+  def teams
+    @teams ||= begin
+      {}.tap do |result|
+        CSV.foreach(@teams_path, headers: true) do |row|
+          result[row['teamID']] ||= row['name']
+        end
       end
     end
   end

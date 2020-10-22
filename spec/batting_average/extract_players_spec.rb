@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe BattingAverage, '#extract_players' do
-  subject(:batting_average) { described_class.new('spec/fixtures/Batting.csv', 'spec/fixtures/Batting.csv') }
+  subject(:batting_average) { described_class.new(batting_path: 'spec/fixtures/Batting.csv') }
 
   it "extract players data" do
     expect(batting_average.extract_players).to eq [
